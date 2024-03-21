@@ -1,7 +1,7 @@
 <main>
   <div class="container">
     <form #contactForm="ngForm">
-      <h1>Login</h1>
+      <h1>Register</h1>
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" name="email" id="email" ngModel />
@@ -10,10 +10,12 @@
         <label for="password">Password</label>
         <input type="text" name="password" id="password" ngModel />
       </div>
-      <button>Login</button>
-      <p>
-        You don't have an account? Register <a routerLink="/register">here</a>!
-      </p>
+      <div class="form-group">
+        <label for="repassword">Repeat password</label>
+        <input type="text" name="repassword" id="repassword" ngModel />
+      </div>
+      <button>Register</button>
+      <p>You already have an account? Login <a routerLink="/login">here</a>!</p>
     </form>
   </div>
 </main>
