@@ -6,9 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
 import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    ContactUsComponent,
-    AboutUsComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,
