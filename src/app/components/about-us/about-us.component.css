@@ -1,5 +1,5 @@
 .container {
-  height: 78vh; 
+  height: 78vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,13 +7,9 @@
 
 .text-area {
   text-align: center;
+  width: 50vw;
 }
 
 .text-area h1 {
-  border-bottom: 1px solid black;
-  padding-bottom: 10px; 
-}
-
-.text-area p {
-  padding-top: 10px;
+  padding-bottom: 10px;
 }
