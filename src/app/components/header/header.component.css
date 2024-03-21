@@ -1,0 +1,46 @@
+.header-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5em;
+    padding-right: 5em;
+}
+
+.header-line nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 2em;
+    align-items: center;
+}
+
+.header-line nav ul li a {
+    text-decoration: none;
+    color: black;
+    font: 16px/1.5 'Cormorant Infant', 'serif';
+}
+
+.site-title {
+    display: block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    text-indent: -150vw;
+    background-image: url('../../../assets/images/logo1.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header-text {
+    background-image: url('../../../assets/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 78vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-area {
+    text-align: center;
+}
