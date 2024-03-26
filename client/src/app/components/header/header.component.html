@@ -1,13 +1,19 @@
 <header>
-    <div class="header-line">
-        <a routerLink="/" class="site-title">Fashion</a>
-        <nav>
-            <ul>
-                <li><a href="#">Store</a></li>
-                <li><a routerLink="about">About</a></li>
-                <li><a routerLink="login" class="login">Login</a></li>
-                <li><a routerLink="register" class="register">Register</a></li>
-            </ul>
-        </nav>
-    </div>
+  <div class="header-line">
+    <a routerLink="/" class="site-title">Fashion</a>
+    <nav>
+      <ul>
+        <li><a href="#">Store</a></li>
+        <li><a routerLink="about">About</a></li>
+        <ng-container *ngIf="!isLoggedIn()">
+          <li><a routerLink="login" class="login">Login</a></li>
+          <li><a routerLink="register" class="register">Register</a></li>
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn()">
+          <li><a>Profile</a></li>
+          <li><a class="register">Logout</a></li>
+        </ng-container>
+      </ul>
+    </nav>
+  </div>
 </header>
