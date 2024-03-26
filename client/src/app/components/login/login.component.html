@@ -1,6 +1,6 @@
 <main>
   <div class="container">
-    <form #contactForm="ngForm">
+    <form #form="ngForm" (ngSubmit)="login(form)">
       <h1>Login</h1>
       <div class="form-group">
         <label for="email">Email</label>
