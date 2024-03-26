@@ -1,6 +1,6 @@
 <main>
   <div class="container">
-    <form #contactForm="ngForm">
+    <form #form="ngForm" (ngSubmit)="register(form)">
       <h1>Register</h1>
       <div class="form-group">
         <label for="email">Email</label>
@@ -8,11 +8,11 @@
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="text" name="password" id="password" ngModel />
+        <input type="password" name="password" id="password" ngModel />
       </div>
       <div class="form-group">
         <label for="repassword">Repeat password</label>
-        <input type="text" name="repassword" id="repassword" ngModel />
+        <input type="password" name="repassword" id="repassword" ngModel />
       </div>
       <button>Register</button>
       <p>You already have an account? Login <a routerLink="/login">here</a>!</p>

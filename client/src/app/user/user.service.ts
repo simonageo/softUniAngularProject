@@ -13,6 +13,11 @@ export class UserService {
     return this.httpClient.post<any>(`${this.URL}/users/login`, body);
   };
 
+  register(email: string, password: string){
+    const body = {email, password};
+    return this.httpClient.post<any>(`${this.URL}/users/register`, body);
+  }
+
   logout(){
     localStorage.removeItem('accessToken');
   }
