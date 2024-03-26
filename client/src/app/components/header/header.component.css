@@ -32,8 +32,12 @@
     background-repeat: no-repeat;
 }
 
-.login, .register {
+.login, .register, .logout {
     background-color: rgba(255,213,201,255);
     border-radius: 2em;
     padding: 10px;
+}
+
+.profile:hover, .logout:hover {
+    cursor: pointer;
 }

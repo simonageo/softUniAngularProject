@@ -11,5 +11,9 @@ export class UserService {
   login(email: string, password: string) {
     const body = { email, password };
     return this.httpClient.post<any>(`${this.URL}/users/login`, body);
+  };
+
+  logout(){
+    localStorage.removeItem('accessToken');
   }
 }
