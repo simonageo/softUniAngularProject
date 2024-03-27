@@ -14,15 +14,17 @@ export class RegisterComponent {
     if (form.invalid) {
       return;
     }
-    const { email, password, repassword } = form.value;
-    if (password === repassword) {
-      this.userService.register(email, password).subscribe((res) => {
-        localStorage.setItem('accessToken', res.accessToken);
-        this.router.navigate(['/']);
-      });
+    const { email, password, rePassword } = form.value;
+    if (password === rePassword) {
+      this.userService
+        .register(email, password)
+        .subscribe((res) => {
+          //localStorage.setItem('accessToken', res.accessToken);
+          this.router.navigate(['/']);
+        });
     } else {
       console.log(password);
-      console.log(repassword)
+      console.log(rePassword);
     }
   }
 }

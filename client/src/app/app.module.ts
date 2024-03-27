@@ -11,6 +11,7 @@ import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { authenticatedInterceptorProvider } from './user/authenticated.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authenticatedInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
