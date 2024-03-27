@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
+  {path: 'error', component: ErrorComponent},
   {
     path: '**',
     redirectTo: '',

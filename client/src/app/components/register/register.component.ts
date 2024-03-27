@@ -19,7 +19,7 @@ export class RegisterComponent {
       this.userService
         .register(email, password)
         .subscribe((res) => {
-          //localStorage.setItem('accessToken', res.accessToken);
+          localStorage.setItem('accessToken', res.accessToken);
           this.router.navigate(['/']);
         });
     } else {

@@ -6,11 +6,12 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
+import { ErrorService } from '../components/error/error.service';
 
 @Injectable()
 class AuthenticatedInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private errorService: ErrorService) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -25,9 +26,20 @@ class AuthenticatedInterceptor implements HttpInterceptor {
         },
       });
       
-      return next.handle(modifiedRequest);
+      return next.handle(modifiedRequest).pipe(
+        catchError(err=> {
+          this.errorService.setError(err)
+          return [err]
+        })
+      );
     }
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError(err=> {
+        this.errorService.setError(err);
+        console.log(err)
+        return [err]
+      })
+    );;
   }
 }
 
