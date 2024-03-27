@@ -6,24 +6,24 @@
         <label for="email">Email</label>
         <input type="email" name="email" id="email" ngModel required email (blur)="form.controls['email'].markAsTouched()" />
         <div *ngIf="form.controls['email']?.invalid && form.controls['email'].touched" class="error-message">
-          <div *ngIf="form.controls['email'].errors?.['required']">Email is required</div>
-          <div *ngIf="form.controls['email'].errors?.['email']">Invalid email format</div>
+          <div *ngIf="form.controls['email'].errors?.['required']">Email is required!</div>
+          <div *ngIf="form.controls['email'].errors?.['email']">Invalid email format!</div>
         </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" name="password" id="password" ngModel required minlength="8" (blur)="form.controls['password'].markAsTouched()" />
         <div *ngIf="form.controls['password']?.invalid && form.controls['password'].touched" class="error-message">
-          <div *ngIf="form.controls['password'].errors?.['required']">Password is required</div>
-          <div *ngIf="form.controls['password'].errors?.['minlength']">Password must be at least 8 characters long</div>
+          <div *ngIf="form.controls['password'].errors?.['required']">Password is required!</div>
+          <div *ngIf="form.controls['password'].errors?.['minlength']">Password must be at least 8 characters long!</div>
         </div>
       </div>
       <div class="form-group">
         <label for="rePassword">Repeat password</label>
         <input type="password" name="rePassword" id="rePassword" ngModel required minlength="8" (blur)="form.controls['rePassword'].markAsTouched()" />
         <div *ngIf="form.controls['rePassword']?.touched" class="error-message">
-          <div *ngIf="form.controls['rePassword'].errors?.['required'] && !form.controls['rePassword'].value">Repeat password is required</div>
-          <div *ngIf="form.controls['rePassword'].value && form.controls['rePassword'].value !== form.controls['password'].value">Passwords do not match</div>
+          <div *ngIf="form.controls['rePassword'].errors?.['required'] && !form.controls['rePassword'].value">Repeat password is required!</div>
+          <div *ngIf="form.controls['rePassword'].value && form.controls['rePassword'].value !== form.controls['password'].value">Passwords do not match!</div>
         </div>
       </div>
       <button>Register</button>

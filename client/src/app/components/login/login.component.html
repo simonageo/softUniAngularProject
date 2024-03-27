@@ -4,11 +4,17 @@
       <h1>Login</h1>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" ngModel required />
+        <input type="text" name="email" id="email" ngModel required email (blur)="form.controls['email'].markAsTouched()" />
+        <div *ngIf="form.controls['email']?.invalid && form.controls['email'].touched" class="error-message">
+          <div *ngIf="form.controls['email'].errors?.['required']">Email is required!</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" ngModel required/>
+        <input type="password" name="password" id="password" ngModel required (blur)="form.controls['password'].markAsTouched()" />
+        <div *ngIf="form.controls['password']?.invalid && form.controls['password'].touched" class="error-message">
+          <div *ngIf="form.controls['password'].errors?.['required']">Password is required!</div>
+        </div>
       </div>
       <button>Login</button>
       <p>
