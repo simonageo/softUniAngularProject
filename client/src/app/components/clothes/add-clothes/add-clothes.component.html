@@ -1,47 +1,31 @@
 <main>
   <div class="container">
-    <form #form="ngForm" (ngSubmit)="addItem(form)">
+    <form #form="ngForm">
       <h1>Add an item</h1>
-      <div class="form-group" >
+      <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" ngModel required (blur)="form.controls['title'].markAsTouched()" />
-        <div *ngIf="form.controls['title']?.invalid && form.controls['title'].touched" class="error-message">
-          <div *ngIf="form.controls['title'].errors?.['required']">Title is required!</div>
-        </div>
+        <input type="text" name="title" id="title" ngModel />
       </div>
       <div class="form-group">
         <label for="category">Category</label>
-        <select name="category" id="category" ngModel required #category="ngModel" (blur)="category.control.markAsTouched()">
+        <select name="category" id="category" ngModel>
           <option value="accessories">Accessories</option>
           <option value="shirts">Shirts</option>
           <option value="pants">Pants</option>
           <option value="shoes">Shoes</option>
         </select>
-        <div *ngIf="category.invalid && category.touched" class="error-message">
-            <div *ngIf="category.errors?.['required']">Category is required!</div>
-          </div>
       </div>
       <div class="form-group">
         <label for="imageUrl">Image URL</label>
-        <input type="text" name="imageUrl" id="imageUrl" ngModel required (blur)="form.controls['imageUrl'].markAsTouched()" />
-        <div *ngIf="form.controls['imageUrl']?.invalid && form.controls['imageUrl'].touched" class="error-message">
-          <div *ngIf="form.controls['imageUrl'].errors?.['required']">Image URL is required!</div>
-        </div>
+        <input type="text" name="imageUrl" id="imageUrl" ngModel />
       </div>
       <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" name="price" id="price" ngModel required (blur)="form.controls['price'].markAsTouched()" (input)="validatePrice(form)"/>
-        <div *ngIf="form.controls['price']?.invalid && form.controls['price'].touched" class="error-message">
-          <div *ngIf="form.controls['price'].errors?.['required']">Price is required!</div>
-          <div *ngIf="form.controls['price'].errors?.['invalidPrice']">Price must be a number greater than or equal to 0!</div>
-        </div>
+        <input type="text" name="price" id="price" ngModel />
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea name="description" id="description" ngModel required #description="ngModel" (blur)="description.control.markAsTouched()"></textarea>
-        <div *ngIf="description.invalid && description.touched" class="error-message">
-          <div *ngIf="description.errors?.['required']">Description is required!</div>
-        </div>
+        <textarea name="description" id="description" ngModel></textarea>
       </div>
       <button>Add</button>
     </form>

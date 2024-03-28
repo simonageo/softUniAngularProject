@@ -11,10 +11,10 @@ import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import { authenticatedInterceptorProvider } from './user/authenticated.interceptor';
 import { ErrorComponent } from './components/error/error.component';
 import { ClothesItemComponent } from './components/clothes/clothes-item/clothes-item.component';
 import { AddClothesComponent } from './components/clothes/add-clothes/add-clothes.component';
+import { InterceptorModule } from './interceptor/interceptor.module';
 
 @NgModule({
   declarations: [
@@ -33,9 +33,10 @@ import { AddClothesComponent } from './components/clothes/add-clothes/add-clothe
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    InterceptorModule
   ],
-  providers: [authenticatedInterceptorProvider],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
