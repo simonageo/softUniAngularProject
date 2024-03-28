@@ -24,3 +24,13 @@ img {
 .clothes-details {
     padding: 16px;
 }
+
+.clothes-details h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.clothes-details p {
+    font-size: 15px;
+    line-height: 1.3;
+}
