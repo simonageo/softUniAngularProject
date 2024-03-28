@@ -21,4 +21,8 @@ export class ClothesService {
     const body = {title, category, imageUrl, price, description}
     return this.httpClient.post<Clothing>(this.URL, body)
   }
+
+  getAllClothes(){
+    return this.httpClient.get<Clothing[]>(this.URL);
+  }
 }

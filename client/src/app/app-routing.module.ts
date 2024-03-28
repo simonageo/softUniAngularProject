@@ -7,11 +7,16 @@ import { RegisterComponent } from './components/register/register.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AddClothesComponent } from './components/clothes/add-clothes/add-clothes.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AllClothesComponent } from './components/clothes/all-clothes/all-clothes.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'store',
+    component: AllClothesComponent
   },
   {
     path: 'about',
