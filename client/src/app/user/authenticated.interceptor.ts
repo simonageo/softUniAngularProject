@@ -8,10 +8,11 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import { ErrorService } from '../components/error/error.service';
+import { UserService } from './user.service';
 
 @Injectable()
 class AuthenticatedInterceptor implements HttpInterceptor {
-  constructor(private errorService: ErrorService) {}
+  constructor(private errorService: ErrorService, private userService: UserService) {}
 
   intercept(
     request: HttpRequest<any>,
