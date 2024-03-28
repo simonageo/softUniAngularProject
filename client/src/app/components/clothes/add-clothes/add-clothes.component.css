@@ -14,7 +14,7 @@
 }
 
 form > h1 {
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   text-align: center;
   font-size: 48px;
 }
@@ -46,4 +46,9 @@ button:hover {
   cursor: pointer;
   background-color: black;
   color: white;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
 }
