@@ -14,12 +14,14 @@
 }
 
 form > h1 {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   text-align: center;
   font-size: 48px;
 }
 
-.form-group > input, select, textarea {
+.form-group > input,
+select,
+textarea {
   margin-top: 5px;
   width: 100%;
   padding: 10px;
@@ -28,7 +30,7 @@ form > h1 {
 }
 
 #description {
-    height: 100px;
+  height: 100px;
 }
 
 button {
@@ -46,4 +48,9 @@ button:hover {
   cursor: pointer;
   background-color: black;
   color: white;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
 }

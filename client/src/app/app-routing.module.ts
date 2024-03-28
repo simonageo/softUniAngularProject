@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AddClothesComponent } from './components/clothes/add-clothes/add-clothes.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'add-item',
-    component: AddClothesComponent
+    component: AddClothesComponent,
+    canActivate: [AuthGuard]
   },
   {path: 'error', component: ErrorComponent},
   {

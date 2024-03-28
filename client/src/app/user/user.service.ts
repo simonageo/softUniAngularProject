@@ -14,6 +14,10 @@ export class UserService implements OnDestroy {
 
   userSubscription: Subscription;
 
+  get isAuthenticated(): boolean {
+    return !!localStorage.getItem('accessToken');
+  };
+
   constructor(private httpClient: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => (this.user = user));
   }
