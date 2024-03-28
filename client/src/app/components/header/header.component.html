@@ -10,7 +10,7 @@
           <li><a routerLink="register" class="register">Register</a></li>
         </ng-container>
         <ng-container *ngIf="isLoggedIn()">
-          <li><a class="profile">Profile</a></li>
+          <li><a routerLink="add-item" class="add-item">Add an item</a></li>
           <li><a (click)="logout()" class="logout">Logout</a></li>
         </ng-container>
       </ul>

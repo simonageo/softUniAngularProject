@@ -1,0 +1,33 @@
+<main>
+  <div class="container">
+    <form #form="ngForm">
+      <h1>Add an item</h1>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" ngModel />
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select name="category" id="category" ngModel>
+          <option value="accessories">Accessories</option>
+          <option value="shirts">Shirts</option>
+          <option value="pants">Pants</option>
+          <option value="shoes">Shoes</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input type="text" name="imageUrl" id="imageUrl" ngModel />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" name="price" id="price" ngModel />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" ngModel></textarea>
+      </div>
+      <button>Add</button>
+    </form>
+  </div>
+</main>

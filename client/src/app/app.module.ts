@@ -13,6 +13,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { authenticatedInterceptorProvider } from './user/authenticated.interceptor';
 import { ErrorComponent } from './components/error/error.component';
+import { ClothesItemComponent } from './components/clothes/clothes-item/clothes-item.component';
+import { AddClothesComponent } from './components/clothes/add-clothes/add-clothes.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ErrorComponent } from './components/error/error.component';
     AboutComponent,
     LoginComponent,
     RegisterComponent,
-    ErrorComponent
+    ErrorComponent,
+    ClothesItemComponent,
+    AddClothesComponent
   ],
   imports: [
     BrowserModule,
