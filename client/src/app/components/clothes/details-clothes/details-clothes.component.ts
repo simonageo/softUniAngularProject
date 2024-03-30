@@ -26,4 +26,8 @@ export class DetailsClothesComponent implements OnInit{
     
   }
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('accessToken');
+  }
+
 }

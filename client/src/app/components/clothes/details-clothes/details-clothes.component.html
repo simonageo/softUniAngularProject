@@ -1,3 +1,20 @@
 <main>
-    <h1>{{clothing?.title}}</h1>
+  <div class="card">
+    <div class="image">
+      <img src="{{ clothing?.imageUrl }}" />
+    </div>
+    <div class="text-area">
+      <h2>{{ clothing?.title }}</h2>
+      <p class="category">Category: {{ clothing?.category }}</p>
+      <p class="price">Price: {{ clothing?.price }}$</p>
+      <p class="description">Description: {{ clothing?.description }}</p>
+      <div class="buttons">
+        <button>Show Comments</button>
+        <div class="loggedInButtons" *ngIf="isLoggedIn()">
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
