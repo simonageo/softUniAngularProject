@@ -6,13 +6,16 @@
         <div class="clothes-details">
           <h2>{{ item.title }}</h2>
           <p class="clothes-price">Price: {{ item.price }}$</p>
-          <button>Details</button>
+          <button routerLink="/store/{{item['_id']}}">Details</button>
         </div>
       </div>
     </div>
   </div>
   
-  <div *ngIf="!clothes || clothes.length === 0">
+  <div *ngIf="!clothes || clothes.length === 0" class="no-clothes">
     <p>No clothes available.</p>
+    <ng-container *ngIf="isLoggedIn()">
+      <button routerLink="/add-item" class="add-item">Add an item</button>
+    </ng-container>
   </div>
 </main>

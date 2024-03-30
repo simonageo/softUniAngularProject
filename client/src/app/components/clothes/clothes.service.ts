@@ -24,5 +24,9 @@ export class ClothesService {
 
   getAllClothes(){
     return this.httpClient.get<Clothing[]>(this.URL);
+  };
+
+  getOneClothing(id:String){
+    return this.httpClient.get<Clothing>(this.URL+'/'+id)
   }
 }

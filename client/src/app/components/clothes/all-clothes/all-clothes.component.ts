@@ -9,7 +9,7 @@ import { ClothesService } from '../clothes.service';
 })
 export class AllClothesComponent implements OnInit {
   clothes: Clothing[] | null = [];
-  clothesRows: Clothing[][] = []; // Define clothesRows array
+  clothesRows: Clothing[][] = [];
 
   constructor(private clothesService: ClothesService) {}
 
@@ -31,5 +31,9 @@ export class AllClothesComponent implements OnInit {
         currentRow = [];
       }
     });
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('accessToken');
   }
 }
