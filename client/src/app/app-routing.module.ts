@@ -40,6 +40,7 @@ const routes: Routes = [
     path: 'store/:id',
     component: DetailsClothesComponent
   },
+  
   {path: 'error', component: ErrorComponent},
   {
     path: '**',

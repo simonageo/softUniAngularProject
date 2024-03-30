@@ -29,6 +29,7 @@ img {
 
 .text-area {
   flex: 1 0 auto;
+ 
   height: 30vw;
   display: flex;
   flex-direction: column;
