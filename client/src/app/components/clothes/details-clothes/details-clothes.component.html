@@ -10,8 +10,8 @@
       <p class="description">Description: {{ clothing?.description }}</p>
       <div class="buttons">
         <button>Show Comments</button>
-        <div class="loggedInButtons" *ngIf="isLoggedIn()">
-          <button>Edit</button>
+        <div class="loggedInButtons" *ngIf="isOwner()">
+          <button routerLink="/store/{{clothing?._id}}/edit">Edit</button>
           <button>Delete</button>
         </div>
       </div>

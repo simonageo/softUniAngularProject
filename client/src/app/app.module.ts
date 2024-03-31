@@ -16,6 +16,7 @@ import { AddClothesComponent } from './components/clothes/add-clothes/add-clothe
 import { InterceptorModule } from './interceptor/interceptor.module';
 import { AllClothesComponent } from './components/clothes/all-clothes/all-clothes.component';
 import { DetailsClothesComponent } from './components/clothes/details-clothes/details-clothes.component';
+import { EditClothingComponent } from './components/clothes/edit-clothing/edit-clothing.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DetailsClothesComponent } from './components/clothes/details-clothes/de
     ErrorComponent,
     AddClothesComponent,
     AllClothesComponent,
-    DetailsClothesComponent
+    DetailsClothesComponent,
+    EditClothingComponent
   ],
   imports: [
     BrowserModule,

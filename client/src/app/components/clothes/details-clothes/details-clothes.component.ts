@@ -11,7 +11,7 @@ import { Clothing } from 'src/app/types/clothes';
 export class DetailsClothesComponent implements OnInit {
   itemId: string = '';
   clothing: Clothing | null = null;
-
+  ownerId: string ='';
   constructor(
     private route: ActivatedRoute,
     private clothesService: ClothesService
@@ -20,17 +20,21 @@ export class DetailsClothesComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.itemId = params['id'];
-      console.log(this.itemId);
     });
     this.clothesService.getOneClothing(this.itemId).subscribe(
       (data) => {
         this.clothing = data;
-        console.log(this.clothing);
+        this.ownerId=data['_ownerId'];
       }
     );
   }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('accessToken');
+  };
+
+  isOwner(): boolean {
+    const userId=localStorage.getItem('userId');
+    return userId===this.ownerId;
   }
 }

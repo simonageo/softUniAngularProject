@@ -1,0 +1,57 @@
+.container {
+    height: 78vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  form > h1 {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 48px;
+  }
+  
+  .form-group > input,
+  select,
+  textarea {
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 2em;
+    border: 1px solid gray;
+  }
+  
+  #description {
+    height: 100px;
+  }
+  
+  button {
+    border-radius: 2em;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid gray;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  
+  button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+  }
+  
