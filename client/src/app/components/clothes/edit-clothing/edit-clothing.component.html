@@ -1,17 +1,17 @@
 <main>
     <div class="container">
       <form #form="ngForm" (ngSubmit)="editItem(form)">
-        <h1>Edit an item</h1>
+        <h1>Edit {{clothing?.title}}</h1>
         <div class="form-group" >
           <label for="title">Title</label>
-          <input type="text" name="title" id="title" ngModel required (blur)="form.controls['title'].markAsTouched()" />
+          <input type="text" name="title" id="title" ngModel required (blur)="form.controls['title'].markAsTouched()" value="{{clothing?.title}}"/>
           <div *ngIf="form.controls['title']?.invalid && form.controls['title'].touched" class="error-message">
             <div *ngIf="form.controls['title'].errors?.['required']">Title is required!</div>
           </div>
         </div>
         <div class="form-group">
           <label for="category">Category</label>
-          <select name="category" id="category" ngModel required #category="ngModel" (blur)="category.control.markAsTouched()">
+          <select name="category" id="category" ngModel required #category="ngModel" (blur)="category.control.markAsTouched()" >
             <option value="accessories">Accessories</option>
             <option value="shirts">Shirts</option>
             <option value="pants">Pants</option>

@@ -17,6 +17,7 @@ export class HeaderComponent {
   logout() {
     this.userService.logout().subscribe(()=>{
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('userId');
       this.router.navigate(['/'])
     });
     
