@@ -1,49 +1,122 @@
 <main>
-    <div class="container">
-      <form #form="ngForm" (ngSubmit)="editItem(form)">
-        <h1>Edit {{clothing?.title}}</h1>
-        <div class="form-group" >
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" ngModel required (blur)="form.controls['title'].markAsTouched()" value="{{clothing?.title}}"/>
-          <div *ngIf="form.controls['title']?.invalid && form.controls['title'].touched" class="error-message">
-            <div *ngIf="form.controls['title'].errors?.['required']">Title is required!</div>
+  <div class="container">
+    <form #form="ngForm" (ngSubmit)="editItem(form)">
+      <h1>Edit {{ clothing?.title }}</h1>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          [value]="clothing?.title"
+          (ngModelChange)="form.controls['title'].markAsTouched()"
+          ngModel
+          required
+        />
+        <div
+          *ngIf="
+            form.controls['title']?.invalid && form.controls['title'].touched
+          "
+          class="error-message"
+        >
+          <div *ngIf="form.controls['title'].errors?.['required']">
+            Title is required!
           </div>
         </div>
-        <div class="form-group">
-          <label for="category">Category</label>
-          <select name="category" id="category" ngModel required #category="ngModel" (blur)="category.control.markAsTouched()" >
-            <option value="accessories">Accessories</option>
-            <option value="shirts">Shirts</option>
-            <option value="pants">Pants</option>
-            <option value="shoes">Shoes</option>
-          </select>
-          <div *ngIf="category.invalid && category.touched" class="error-message">
-              <div *ngIf="category.errors?.['required']">Category is required!</div>
-            </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select
+          name="category"
+          id="category"
+          ngModel
+          required
+          [value]="clothing?.category"
+          #category="ngModel"
+          (ngModelChange)="category.control.markAsTouched()"
+        >
+          <option value="accessories">Accessories</option>
+          <option value="shirts">Shirts</option>
+          <option value="pants">Pants</option>
+          <option value="shoes">Shoes</option>
+        </select>
+        <div *ngIf="category.invalid && category.touched" class="error-message">
+          <div *ngIf="category.errors?.['required']">Category is required!</div>
         </div>
-        <div class="form-group">
-          <label for="imageUrl">Image URL</label>
-          <input type="text" name="imageUrl" id="imageUrl" ngModel required (blur)="form.controls['imageUrl'].markAsTouched()" />
-          <div *ngIf="form.controls['imageUrl']?.invalid && form.controls['imageUrl'].touched" class="error-message">
-            <div *ngIf="form.controls['imageUrl'].errors?.['required']">Image URL is required!</div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input
+          type="text"
+          name="imageUrl"
+          id="imageUrl"
+          value="{{ clothing?.imageUrl }}"
+          ngModel
+          required
+          (ngModelChange)="form.controls['imageUrl'].markAsTouched()"
+        />
+        <div
+          *ngIf="
+            form.controls['imageUrl']?.invalid &&
+            form.controls['imageUrl'].touched
+          "
+          class="error-message"
+        >
+          <div *ngIf="form.controls['imageUrl'].errors?.['required']">
+            Image URL is required!
           </div>
         </div>
-        <div class="form-group">
-          <label for="price">Price</label>
-          <input type="number" name="price" id="price" ngModel required (blur)="form.controls['price'].markAsTouched()" (input)="validatePrice(form)"/>
-          <div *ngIf="form.controls['price']?.invalid && form.controls['price'].touched" class="error-message">
-            <div *ngIf="form.controls['price'].errors?.['required']">Price is required!</div>
-            <div *ngIf="form.controls['price'].errors?.['invalidPrice']">Price must be a number greater than or equal to 0!</div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          value="{{ clothing?.price }}"
+          ngModel
+          required
+          (ngModelChange)="form.controls['price'].markAsTouched()"
+          (input)="validatePrice(form)"
+        />
+        <div
+          *ngIf="
+            form.controls['price']?.invalid && form.controls['price'].touched
+          "
+          class="error-message"
+        >
+          <div *ngIf="form.controls['price'].errors?.['required']">
+            Price is required!
+          </div>
+          <div *ngIf="form.controls['price'].errors?.['invalidPrice']">
+            Price must be a number greater than or equal to 0!
           </div>
         </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea name="description" id="description" ngModel required #description="ngModel" (blur)="description.control.markAsTouched()"></textarea>
-          <div *ngIf="description.invalid && description.touched" class="error-message">
-            <div *ngIf="description.errors?.['required']">Description is required!</div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          name="description"
+          id="description"
+          value="{{ clothing?.description }}"
+          ngModel
+          required
+          #description="ngModel"
+          (ngModelChange)="description.control.markAsTouched()"
+        ></textarea>
+        <div
+          *ngIf="description.invalid && description.touched"
+          class="error-message"
+        >
+          <div *ngIf="description.errors?.['required']">
+            Description is required!
           </div>
         </div>
-        <button>Add</button>
-      </form>
-    </div>
-  </main>
+      </div>
+      <div class="buttons">
+        <button type="submit">Add</button>
+        <a routerLink="/store/{{ clothing?._id }}">Cancel</a>
+      </div>
+    </form>
+  </div>
+</main>
