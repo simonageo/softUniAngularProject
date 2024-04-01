@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClothesService } from '../clothes.service';
 import { Clothing } from 'src/app/types/clothes';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/types/user';
 
 @Component({
   selector: 'app-details-clothes',
@@ -13,12 +14,13 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
   itemId: string = '';
   clothing: Clothing | null = null;
   ownerId: string ='';
+  userId: string='';
   paramsSubscription: Subscription | null = null;
   clothingSubscription: Subscription | null = null;
   constructor(
     private route: ActivatedRoute,
     private clothesService: ClothesService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
         this.clothing = data;
         this.ownerId = data['_ownerId'];
       }
-    );
+    );    
   }
 
   isLoggedIn(): boolean {
@@ -46,6 +48,10 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
     this.clothesService.removeClothing(this.itemId).subscribe((res)=>{
       this.router.navigate(['store'])
     })
+  }
+
+  getItemTitle(){
+    return this.clothing?.title;
   }
 
   ngOnDestroy(): void {

@@ -9,7 +9,7 @@
       <p class="price">Price: {{ clothing?.price }}$</p>
       <p class="description">Description: {{ clothing?.description }}</p>
       <div class="buttons">
-        <button>Show Comments</button>
+        <button routerLink="/store/{{clothing?._id}}/comments">Comments</button>
         <div class="loggedInButtons" *ngIf="isOwner()">
           <button routerLink="/store/{{clothing?._id}}/edit">Edit</button>
           <button (click)="onDelete()">Delete</button>

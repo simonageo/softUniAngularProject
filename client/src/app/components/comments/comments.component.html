@@ -1,0 +1,22 @@
+<main>
+  <div class="container">
+    <h1>Comments for {{item?.title}}</h1>
+    <form #form="ngForm" class="add-comment">
+      <textarea name="comment" id="comment" ngModel
+      required
+      #description="ngModel"></textarea>
+      <span class="add-comment-icon" (click)="addComment(form)">
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </form>
+    <div class="no-comments">
+      <h1>No comments yet.</h1>
+    </div>
+    <div class="all-comments">
+      <div class="comment">
+        <strong>username</strong>
+        <p>content</p>
+      </div>
+    </div>
+  </div>
+</main>

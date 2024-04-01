@@ -1458,6 +1458,7 @@
         _createdOn: 1711644715521,
       },
     },
+    comments: {}
   };
   var rules$1 = {
     users: {

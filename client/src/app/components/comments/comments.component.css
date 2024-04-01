@@ -1,0 +1,32 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container > h1 {
+  margin: 30px;
+}
+
+.add-comment {
+  position: relative;
+}
+
+.add-comment textarea {
+    margin-bottom: 5px;
+    width: 50vw;
+    padding: 10px;
+    border-radius: 2em;
+    border: 1px solid gray;
+}
+
+.add-comment-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

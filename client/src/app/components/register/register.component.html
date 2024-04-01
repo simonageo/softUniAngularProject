@@ -11,6 +11,13 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" ngModel required (blur)="form.controls['username'].markAsTouched()" />
+        <div *ngIf="form.controls['username']?.invalid && form.controls['username'].touched" class="error-message">
+          <div *ngIf="form.controls['username'].errors?.['required']">Username is required!</div>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="password">Password</label>
         <input type="password" name="password" id="password" ngModel required minlength="8" (blur)="form.controls['password'].markAsTouched()" />
         <div *ngIf="form.controls['password']?.invalid && form.controls['password'].touched" class="error-message">

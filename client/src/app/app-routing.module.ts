@@ -10,6 +10,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { AllClothesComponent } from './components/clothes/all-clothes/all-clothes.component';
 import { DetailsClothesComponent } from './components/clothes/details-clothes/details-clothes.component';
 import { EditClothingComponent } from './components/clothes/edit-clothing/edit-clothing.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'store/:id/edit',
     component: EditClothingComponent
+  },
+  {
+    path: 'store/:id/comments',
+    component: CommentsComponent
   },
   
   {path: 'error', component: ErrorComponent},

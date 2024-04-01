@@ -12,6 +12,7 @@ export class AllClothesComponent implements OnInit, OnDestroy {
   clothes: Clothing[] | null = [];
   clothesRows: Clothing[][] = [];
   clothingSubscription: Subscription | null = null;
+  
 
   constructor(private clothesService: ClothesService) {}
 
