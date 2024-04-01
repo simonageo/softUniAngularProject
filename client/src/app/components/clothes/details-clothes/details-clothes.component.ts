@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClothesService } from '../clothes.service';
 import { Clothing } from 'src/app/types/clothes';
 import { Subscription } from 'rxjs';
@@ -17,7 +17,8 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
   clothingSubscription: Subscription | null = null;
   constructor(
     private route: ActivatedRoute,
-    private clothesService: ClothesService
+    private clothesService: ClothesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +40,12 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
   isOwner(): boolean {
     const userId=localStorage.getItem('userId');
     return userId===this.ownerId;
+  }
+
+  onDelete() {
+    this.clothesService.removeClothing(this.itemId).subscribe((res)=>{
+      this.router.navigate(['store'])
+    })
   }
 
   ngOnDestroy(): void {

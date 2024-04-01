@@ -12,7 +12,7 @@
         <button>Show Comments</button>
         <div class="loggedInButtons" *ngIf="isOwner()">
           <button routerLink="/store/{{clothing?._id}}/edit">Edit</button>
-          <button>Delete</button>
+          <button (click)="onDelete()">Delete</button>
         </div>
       </div>
     </div>

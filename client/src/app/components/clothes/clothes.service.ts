@@ -28,5 +28,9 @@ export class ClothesService {
 
   getOneClothing(id:String){
     return this.httpClient.get<Clothing>(this.URL+'/'+id)
+  };
+
+  removeClothing(id:string){
+    return this.httpClient.delete<Clothing>(this.URL+'/'+id)
   }
 }

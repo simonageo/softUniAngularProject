@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Clothing } from 'src/app/types/clothes';
 import { ClothesService } from '../clothes.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-all-clothes',
   templateUrl: './all-clothes.component.html',
   styleUrls: ['./all-clothes.component.css'],
 })
-export class AllClothesComponent implements OnInit {
+export class AllClothesComponent implements OnInit, OnDestroy {
   clothes: Clothing[] | null = [];
   clothesRows: Clothing[][] = [];
+  clothingSubscription: Subscription | null = null;
 
   constructor(private clothesService: ClothesService) {}
 
   ngOnInit(): void {
-    this.clothesService.getAllClothes().subscribe((data: Clothing[]) => {
+    this.clothingSubscription = this.clothesService.getAllClothes().subscribe((data: Clothing[]) => {
       this.clothes = data;
       this.organizeClothesIntoRows();
     });
@@ -35,5 +37,9 @@ export class AllClothesComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('accessToken');
+  };
+
+  ngOnDestroy(): void {
+    this.clothingSubscription?.unsubscribe();
   }
 }
