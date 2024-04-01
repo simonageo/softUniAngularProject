@@ -9,34 +9,44 @@ import { Clothing } from 'src/app/types/clothes';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.css'],
 })
 export class CommentsComponent implements OnInit {
-  itemsId: string ='';
+  itemsId: string = '';
   paramsSubscription: Subscription | null = null;
   clothesSubscription: Subscription | null = null;
   item: Clothing | null = null;
-  constructor (private commentsService: CommentsService, private route: ActivatedRoute, private clothesService: ClothesService){}
+  constructor(
+    private commentsService: CommentsService,
+    private route: ActivatedRoute,
+    private clothesService: ClothesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.paramsSubscription = this.route.params.subscribe((params)=>{
-      this.itemsId=params['id']
+    this.paramsSubscription = this.route.params.subscribe((params) => {
+      this.itemsId = params['id'];
     });
-    this.clothesSubscription=this.clothesService.getOneClothing(this.itemsId).subscribe(req=>{
-      this.item=req;
-    })
-  };
+    this.clothesSubscription = this.clothesService
+      .getOneClothing(this.itemsId)
+      .subscribe((req) => {
+        this.item = req;
+      });
+  }
 
-  addComment(form: NgForm){
-    if (form.invalid){
-      console.log('Form invalid')
+  addComment(form: NgForm) {
+    if (form.invalid) {
+      console.log('Form invalid');
       return;
-    };
-    const {comment}=form.value;
-    const username=localStorage.getItem('username');
-    if (!!username){
-      this.commentsService.addComment(this.itemsId, comment, username)
     }
-    
+    const { comment } = form.value;
+    const username = localStorage.getItem('username');
+    if (!!username) {
+      this.commentsService
+        .addComment(this.itemsId, comment, username)
+        .subscribe((res) => {
+          console.log(res)
+        });
+    }
   }
 }

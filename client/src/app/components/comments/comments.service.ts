@@ -11,7 +11,6 @@ export class CommentsService {
 
   addComment(itemId:string, text: string, username: string){
     const body={itemId, text, username};
-    console.log(body)
     return this.httpClient.post<Comment>(this.URL, body)
   }
 }
