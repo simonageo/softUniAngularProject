@@ -1,16 +1,15 @@
 <main>
-  <div class="container">
+  <div class="container" *ngIf="clothing">
     <form #form="ngForm" (ngSubmit)="editItem(form)">
-      <h1>Edit {{ clothing?.title }}</h1>
+      <h1>Edit an item</h1>
       <div class="form-group">
         <label for="title">Title</label>
         <input
           type="text"
           name="title"
           id="title"
-          [value]="clothing?.title"
+          [(ngModel)]="clothing.title"
           (ngModelChange)="form.controls['title'].markAsTouched()"
-          ngModel
           required
         />
         <div
@@ -29,9 +28,8 @@
         <select
           name="category"
           id="category"
-          ngModel
+          [(ngModel)]="clothing.category"
           required
-          [value]="clothing?.category"
           #category="ngModel"
           (ngModelChange)="category.control.markAsTouched()"
         >
@@ -50,8 +48,7 @@
           type="text"
           name="imageUrl"
           id="imageUrl"
-          value="{{ clothing?.imageUrl }}"
-          ngModel
+          [(ngModel)]="clothing.imageUrl"
           required
           (ngModelChange)="form.controls['imageUrl'].markAsTouched()"
         />
@@ -73,10 +70,11 @@
           type="number"
           name="price"
           id="price"
-          value="{{ clothing?.price }}"
-          ngModel
+          [(ngModel)]="clothing.price"
           required
-          (ngModelChange)="form.controls['price'].markAsTouched()"
+          (ngModelChange)="
+            form.controls['price'].markAsTouched(); validatePrice(form)
+          "
           (input)="validatePrice(form)"
         />
         <div
@@ -98,8 +96,7 @@
         <textarea
           name="description"
           id="description"
-          value="{{ clothing?.description }}"
-          ngModel
+          [(ngModel)]="clothing.description"
           required
           #description="ngModel"
           (ngModelChange)="description.control.markAsTouched()"
@@ -114,8 +111,8 @@
         </div>
       </div>
       <div class="buttons">
-        <button type="submit">Add</button>
-        <a routerLink="/store/{{ clothing?._id }}">Cancel</a>
+        <button type="submit">Update</button>
+        <a routerLink="/store/{{ clothing._id }}">Cancel</a>
       </div>
     </form>
   </div>

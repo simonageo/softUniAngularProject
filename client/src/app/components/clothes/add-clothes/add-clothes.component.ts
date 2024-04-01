@@ -32,7 +32,7 @@ export class AddClothesComponent {
     this.clothesService
       .addClothing(title, category, imageUrl, price, description)
       .subscribe((res) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/store']);
       });
   }
 }

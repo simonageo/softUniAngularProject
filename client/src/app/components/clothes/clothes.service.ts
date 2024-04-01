@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Clothing } from 'src/app/types/clothes';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClothesService {
   URL = 'http://localhost:3030/data/clothes';
   clothes: Clothing | undefined;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   addClothing(
     title: string,
@@ -18,19 +18,31 @@ export class ClothesService {
     price: number,
     description: string
   ) {
-    const body = {title, category, imageUrl, price, description}
-    return this.httpClient.post<Clothing>(this.URL, body)
+    const body = { title, category, imageUrl, price, description };
+    return this.httpClient.post<Clothing>(this.URL, body);
   }
 
-  getAllClothes(){
+  getAllClothes() {
     return this.httpClient.get<Clothing[]>(this.URL);
-  };
+  }
 
-  getOneClothing(id:String){
-    return this.httpClient.get<Clothing>(this.URL+'/'+id)
-  };
+  getOneClothing(id: String) {
+    return this.httpClient.get<Clothing>(this.URL + '/' + id);
+  }
 
-  removeClothing(id:string){
-    return this.httpClient.delete<Clothing>(this.URL+'/'+id)
+  updateClothing(
+    id: string,
+    title: string,
+    category: string,
+    imageUrl: string,
+    price: number,
+    description: string
+  ) {
+    const body = { title, category, imageUrl, price, description };
+    return this.httpClient.put<Clothing>(this.URL + '/' + id, body);
+  }
+
+  removeClothing(id: string) {
+    return this.httpClient.delete<Clothing>(this.URL + '/' + id);
   }
 }

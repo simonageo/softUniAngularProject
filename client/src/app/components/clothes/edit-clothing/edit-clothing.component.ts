@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClothesService } from '../clothes.service';
 import { Clothing } from 'src/app/types/clothes';
 import { Subscription } from 'rxjs';
@@ -15,8 +15,9 @@ export class EditClothingComponent implements OnInit, OnDestroy{
   clothing: Clothing | null = null;
   paramsSubscription: Subscription | null = null;
   clothingSubscription: Subscription | null = null;
+  editClothingSubscription: Subscription | null = null;
 
-  constructor (private route: ActivatedRoute, private clothesService: ClothesService){}
+  constructor (private route: ActivatedRoute, private clothesService: ClothesService, private router: Router){}
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.params.subscribe(params => {
@@ -27,8 +28,16 @@ export class EditClothingComponent implements OnInit, OnDestroy{
     });
   }
   editItem(form: NgForm){
-    //
-  }
+    if (form.invalid){
+      console.log('invalid form');
+      return;
+    }
+    const {title, category, imageUrl, price, description} = form.value;
+    this.editClothingSubscription=this.clothesService.updateClothing(this.itemId, title, category, imageUrl, price, description).subscribe(res=>{
+      this.router.navigate([`/store/${this.itemId}`])
+    })
+  };
+
   validatePrice(form: NgForm) {
     const priceControl = form.controls['price'];
     if (priceControl.value === null) {
@@ -45,5 +54,6 @@ export class EditClothingComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.paramsSubscription?.unsubscribe();
     this.clothingSubscription?.unsubscribe();
+    this.editClothingSubscription?.unsubscribe();
   }
 }
