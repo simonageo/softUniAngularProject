@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommentsService } from './comments.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ClothesService } from '../clothes/clothes.service';
 import { Clothing } from 'src/app/types/clothes';
 import { Comment } from 'src/app/types/comment';
@@ -12,7 +12,7 @@ import { Comment } from 'src/app/types/comment';
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css'],
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnInit, OnDestroy {
   itemsId: string = '';
   paramsSubscription: Subscription | null = null;
   clothesSubscription: Subscription | null = null;
@@ -23,8 +23,7 @@ export class CommentsComponent implements OnInit {
   constructor(
     private commentsService: CommentsService,
     private route: ActivatedRoute,
-    private clothesService: ClothesService,
-    private router: Router
+    private clothesService: ClothesService
   ) {}
 
   ngOnInit(): void {
@@ -54,12 +53,26 @@ export class CommentsComponent implements OnInit {
       this.commentsService
         .addComment(this.itemsId, comment, username)
         .subscribe((res) => {
-          console.log(res);
+          const newComment: Comment = res;
+          this.comments?.push(newComment);
+          form.resetForm();
         });
     }
   };
 
   isLoggedIn(){
     return !!localStorage.getItem('accessToken');
+  }
+
+  ngOnDestroy(): void {
+    if (this.paramsSubscription) {
+      this.paramsSubscription.unsubscribe();
+    }
+    if (this.clothesSubscription) {
+      this.clothesSubscription.unsubscribe();
+    }
+    if (this.commentsSubscription) {
+      this.commentsSubscription.unsubscribe();
+    }
   }
 }
