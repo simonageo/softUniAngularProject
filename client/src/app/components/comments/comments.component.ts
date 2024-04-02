@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClothesService } from '../clothes/clothes.service';
 import { Clothing } from 'src/app/types/clothes';
+import { Comment } from 'src/app/types/comment';
 
 @Component({
   selector: 'app-comments',
@@ -15,7 +16,10 @@ export class CommentsComponent implements OnInit {
   itemsId: string = '';
   paramsSubscription: Subscription | null = null;
   clothesSubscription: Subscription | null = null;
+  commentsSubscription: Subscription | null = null;
   item: Clothing | null = null;
+  comments: Comment[] | null = [];
+
   constructor(
     private commentsService: CommentsService,
     private route: ActivatedRoute,
@@ -32,6 +36,11 @@ export class CommentsComponent implements OnInit {
       .subscribe((req) => {
         this.item = req;
       });
+    this.commentsSubscription = this.commentsService
+      .getAllCommentsForItem(this.itemsId)
+      .subscribe((data: Comment[]) => {
+        this.comments = data;
+      });
   }
 
   addComment(form: NgForm) {
@@ -45,8 +54,12 @@ export class CommentsComponent implements OnInit {
       this.commentsService
         .addComment(this.itemsId, comment, username)
         .subscribe((res) => {
-          console.log(res)
+          console.log(res);
         });
     }
+  };
+
+  isLoggedIn(){
+    return !!localStorage.getItem('accessToken');
   }
 }

@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Comment } from 'src/app/types/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,13 @@ export class CommentsService {
   URL = 'http://localhost:3030/data/comments';
 
   constructor(private httpClient: HttpClient) { }
+
+  getAllCommentsForItem(itemId: string){
+    const query = new URLSearchParams({
+      where: `itemId="${itemId}"`,
+    });
+    return this.httpClient.get<Comment[]>(this.URL+`?`+query);
+  }
 
   addComment(itemId:string, text: string, username: string){
     const body={itemId, text, username};

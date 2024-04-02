@@ -1,21 +1,27 @@
 <main>
   <div class="container">
-    <h1>Comments for {{item?.title}}</h1>
-    <form #form="ngForm" class="add-comment">
-      <textarea name="comment" id="comment" ngModel
-      required
-      #description="ngModel"></textarea>
+    <h1>Comments for {{ item?.title }}</h1>
+    <form #form="ngForm" class="add-comment" *ngIf="isLoggedIn()">
+      <textarea
+        name="comment"
+        id="comment"
+        ngModel
+        required
+        #description="ngModel"
+      ></textarea>
       <span class="add-comment-icon" (click)="addComment(form)">
         <i class="fa-solid fa-arrow-right"></i>
       </span>
     </form>
-    <div class="no-comments">
+    <div *ngIf="comments?.length === 0" class="no-comments">
       <h1>No comments yet.</h1>
     </div>
-    <div class="all-comments">
-      <div class="comment">
-        <strong>username</strong>
-        <p>content</p>
+    <div *ngIf="comments?.length != 0" class="all-comments">
+      <div *ngFor="let comment of comments" class="comment">
+        <div class="text">
+          <strong>{{ comment.username }}</strong>
+          <p>{{ comment.text }}</p>
+        </div>
       </div>
     </div>
   </div>

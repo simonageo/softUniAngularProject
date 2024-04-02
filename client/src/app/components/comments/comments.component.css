@@ -30,3 +30,23 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+.all-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment {
+  margin-bottom: 5px;
+  width: 50vw;
+  padding: 10px;
+  border-radius: 2em;
+  border: 1px solid gray;
+  background-color: rgb(241, 235, 235);
+}
+
+.text {
+  margin-left: 15px;
+}
