@@ -58,10 +58,25 @@ export class CommentsComponent implements OnInit, OnDestroy {
           form.resetForm();
         });
     }
-  };
+  }
 
-  isLoggedIn(){
+  isLoggedIn() {
     return !!localStorage.getItem('accessToken');
+  }
+
+  userId() {
+    return localStorage.getItem('userId');
+  }
+
+  deleteComment(id: string) {
+    this.commentsService.deleteComment(id).subscribe(() => {
+      if (this.comments) {
+        const index = this.comments.findIndex(comment => comment._id === id);
+        if (index !== -1) {
+          this.comments.splice(index, 1);
+        }
+      }
+    });
   }
 
   ngOnDestroy(): void {

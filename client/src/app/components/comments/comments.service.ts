@@ -21,4 +21,9 @@ export class CommentsService {
     const body={itemId, text, username};
     return this.httpClient.post<Comment>(this.URL, body)
   }
+
+  deleteComment(id: string){
+    return this.httpClient.delete(`${this.URL}/${id}`)
+  }
+
 }

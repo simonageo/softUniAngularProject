@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClothesService } from '../clothes.service';
 import { Clothing } from 'src/app/types/clothes';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/types/user';
 
 @Component({
   selector: 'app-details-clothes',
@@ -13,10 +12,11 @@ import { User } from 'src/app/types/user';
 export class DetailsClothesComponent implements OnInit, OnDestroy {
   itemId: string = '';
   clothing: Clothing | null = null;
-  ownerId: string ='';
-  userId: string='';
+  ownerId: string = '';
+  userId: string = '';
   paramsSubscription: Subscription | null = null;
   clothingSubscription: Subscription | null = null;
+
   constructor(
     private route: ActivatedRoute,
     private clothesService: ClothesService,
@@ -27,30 +27,36 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
     this.paramsSubscription = this.route.params.subscribe((params) => {
       this.itemId = params['id'];
     });
-    this.clothingSubscription = this.clothesService.getOneClothing(this.itemId).subscribe(
-      (data) => {
+    this.clothingSubscription = this.clothesService
+      .getOneClothing(this.itemId)
+      .subscribe((data) => {
         this.clothing = data;
         this.ownerId = data['_ownerId'];
-      }
-    );    
+      });
   }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('accessToken');
-  };
+  }
 
   isOwner(): boolean {
-    const userId=localStorage.getItem('userId');
-    return userId===this.ownerId;
+    const userId = localStorage.getItem('userId');
+    return userId === this.ownerId;
   }
 
   onDelete() {
-    this.clothesService.removeClothing(this.itemId).subscribe((res)=>{
-      this.router.navigate(['store'])
-    })
+    const confirmation = window.confirm(
+      'Are you sure you want to delete this item?'
+    );
+
+    if (confirmation) {
+      this.clothesService.removeClothing(this.itemId).subscribe(() => {
+        this.router.navigate(['store']);
+      });
+    }
   }
 
-  getItemTitle(){
+  getItemTitle() {
     return this.clothing?.title;
   }
 
