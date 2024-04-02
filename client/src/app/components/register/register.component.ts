@@ -1,15 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { ErrorService } from '../error/error.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
-  constructor(private userService: UserService, private router: Router) {}
+export class RegisterComponent implements OnInit {
+  errorMsg = '';
+  constructor(private userService: UserService, private router: Router, private errorService: ErrorService) {}
+
+  ngOnInit(): void {
+    this.errorService.apiError$$.subscribe((err: any) => {
+      if (err) {
+        this.errorMsg = err.message;
+      } else {
+        this.errorMsg = '';
+      }
+    });
+  }
+
   register(form: NgForm) {
     if (form.invalid) {
       return;

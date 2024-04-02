@@ -20,6 +20,8 @@
       <p>
         You don't have an account? Register <a routerLink="/register">here</a>!
       </p>
+      <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
     </form>
+    
   </div>
 </main>

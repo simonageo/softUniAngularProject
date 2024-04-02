@@ -35,6 +35,7 @@
       </div>
       <button>Register</button>
       <p>You already have an account? Login <a routerLink="/login">here</a>!</p>
+      <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
     </form>
   </div>
 </main>
