@@ -14,7 +14,7 @@ Welcome to Fashion Shop! This application enables registered users to manage the
 
 **Prerequisites**
 
--Ensure you have Node.js and npm (Node Package Manager) installed globally on your machine.
+Ensure you have Node.js and npm (Node Package Manager) installed globally on your machine.
 
 **Getting Started**
 
