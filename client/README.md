@@ -28,4 +28,4 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 ## Support
 
-For any further assistance or inquiries, please contact [insert contact information or link to support resources].
+For any further assistance or inquiries, please contact sag954@gmail.com.
