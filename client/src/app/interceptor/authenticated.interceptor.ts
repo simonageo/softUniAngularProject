@@ -11,7 +11,7 @@ import { ErrorService } from '../components/error/error.service';
 
 @Injectable()
 export class AuthenticatedInterceptor implements HttpInterceptor {
-  constructor(private errorService: ErrorService) {}
+  constructor(private errorService: ErrorService,) {}
 
   intercept(
     request: HttpRequest<any>,

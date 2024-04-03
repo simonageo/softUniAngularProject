@@ -12,6 +12,7 @@ import { DetailsClothesComponent } from './components/clothes/details-clothes/de
 import { EditClothingComponent } from './components/clothes/edit-clothing/edit-clothing.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { NotAuthGuard } from './guard/not-authenticated.guard';
+import { IsOwner } from './guard/is-owner.guard';
 
 const routes: Routes = [
   {
@@ -47,7 +48,8 @@ const routes: Routes = [
   },
   {
     path: 'store/:id/edit',
-    component: EditClothingComponent
+    component: EditClothingComponent,
+    canActivate: [IsOwner]
   },
   {
     path: 'store/:id/comments',

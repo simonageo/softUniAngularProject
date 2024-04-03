@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Clothing } from 'src/app/types/clothes';
 import { ErrorService } from '../error/error.service';
 import { catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class ClothesService {
   URL = 'http://localhost:3030/data/clothes';
   clothes: Clothing | undefined;
 
-  constructor(private httpClient: HttpClient, private errorService: ErrorService) {}
+  constructor(private httpClient: HttpClient, private errorService: ErrorService, private router: Router) {}
 
   addClothing(
     title: string,
