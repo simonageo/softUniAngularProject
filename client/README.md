@@ -1,27 +1,31 @@
-# SoftUniAngularProject
+# SoftUni Angular Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+Welcome to Fashion Shop! This application enables registered users to manage their clothing collection, share opinions, and engage with the fashion community.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **User Authentication:** Register, log in, and log out securely to access the full functionality.
+- **Add Clothing Items:** Seamlessly add new items to your store with details such as title, category, image, price, and description.
+- **Edit Clothing Items:** Keep your store up-to-date by modifying existing clothing item details.
+- **Remove Clothing Items:** Easily delete unwanted clothing items.
+- **Comments Section:** Share your thoughts and experiences by adding comments to specific clothing items.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Prerequisites**
 
-## Build
+-Ensure you have Node.js and npm (Node Package Manager) installed globally on your machine.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Getting Started**
 
-## Running unit tests
+- **Download the Repository:** Clone or download the GitHub repository to your local machine.
+- **Server Initialization:** Navigate to the server folder in your command line interface (CMD) and run "node server.js".
+- **Application Initialization:** Navigate to the client folder in your command line interface (CMD) and run "npm install" and "ng serve".
+- **Accessing the Application:** Once the application has been successfully initialized, a link will be provided in the terminal. Open this link in your preferred web browser to access the Fashion Shop application.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contribution
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please feel free to open an issue or create a pull request.
 
-## Running end-to-end tests
+## Support
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For any further assistance or inquiries, please contact [insert contact information or link to support resources].
