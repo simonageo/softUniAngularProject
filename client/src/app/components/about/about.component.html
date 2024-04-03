@@ -1,31 +1,82 @@
 <main>
+  <div class="authenticated-view" *ngIf="isAuthenticated">
     <div class="about">
       <div class="text-area">
         <h1>Welcome to Fashion Shop,</h1>
         <p>
-          where style meets sophistication. Explore our curated collection of the
-          latest trends in fashion, from timeless classics to contemporary
-          must-haves. Whether you're a fashion enthusiast looking to elevate your
-          wardrobe or a seller seeking to showcase your creations, we provide a
-          platform for everyone. Our diverse selection caters to every style and
-          occasion, ensuring that both buyers and sellers find what they're
-          looking for. Step into a world of elegance and discover your signature
-          look with us today.
+          where style meets sophistication. Explore our curated collection of
+          the latest trends in fashion, from timeless classics to contemporary
+          must-haves. Whether you're a fashion enthusiast looking to elevate
+          your wardrobe or a seller seeking to showcase your creations, we
+          provide a platform for everyone. Our diverse selection caters to every
+          style and occasion, ensuring that both buyers and sellers find what
+          they're looking for. Step into a world of elegance and discover your
+          signature look with us today.
         </p>
       </div>
     </div>
     <div class="contact">
-      <form #contactForm="ngForm">
+      <form #form="ngForm" (ngSubmit)="sendMessage(form)">
         <h1>Contact Us</h1>
-        <input type="text" name="email" id="email" placeholder="Email" ngModel />
-        <textarea
-          type="text"
-          name="content"
-          id="content"
-          placeholder="Content"
-          ngModel
-        ></textarea>
-        <button routerLink="/">Submit</button>
+        <div class="form-group">
+          <input
+            type="text"
+            name="email"
+            id="email"
+            ngModel
+            required
+            email
+            (blur)="form.controls['email'].markAsTouched()"
+            placeholder="Email"
+          />
+          <div
+            *ngIf="
+              form.controls['email']?.invalid && form.controls['email'].touched
+            "
+            class="error-message"
+          >
+            <div *ngIf="form.controls['email'].errors?.['required']">
+              Email is required!
+            </div>
+            <div *ngIf="form.controls['email'].errors?.['email']">
+              Invalid email format!
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea
+            name="message"
+            id="message"
+            ngModel
+            required
+            #message="ngModel"
+            (blur)="message.control.markAsTouched()"
+            placeholder="Message"
+          ></textarea>
+          <div *ngIf="message.invalid && message.touched" class="error-message">
+            <div *ngIf="message.errors?.['required']">Message is required!</div>
+          </div>
+        </div>
+        <button>Submit</button>
       </form>
     </div>
-  </main>
+  </div>
+  <div class="not-authenticated-view" *ngIf="!isAuthenticated">
+    <div class="about">
+      <div class="text-area">
+        <h1>Welcome to Fashion Shop,</h1>
+        <p>
+          where style meets sophistication. Explore our curated collection of
+          the latest trends in fashion, from timeless classics to contemporary
+          must-haves. Whether you're a fashion enthusiast looking to elevate
+          your wardrobe or a seller seeking to showcase your creations, we
+          provide a platform for everyone. Our diverse selection caters to every
+          style and occasion, ensuring that both buyers and sellers find what
+          they're looking for. Step into a world of elegance and discover your
+          signature look with us today.
+        </p>
+        <p>To contact us, <a routerLink="/register">register</a> or <a routerLink="/login">login</a>!</p>
+      </div>
+    </div>
+  </div>
+</main>
