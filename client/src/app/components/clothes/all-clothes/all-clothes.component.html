@@ -1,7 +1,7 @@
 <main>
   <div *ngIf="clothes && clothes.length > 0" class="clothes-container">
-    <div class="clothes-row" *ngFor="let row of clothesRows">
-      <div class="clothes-card" *ngFor="let item of clothes">
+    <div class="clothes-row">
+      <div class="clothes-card" *ngFor="let item of clothes.slice(getRange().start, getRange().end + 1)">
         <img [src]="item.imageUrl" alt="{{ item.title }}" class="clothes-image">
         <div class="clothes-details">
           <h2>{{ item.title }}</h2>
@@ -9,6 +9,11 @@
           <button routerLink="/store/{{item['_id']}}">Details</button>
         </div>
       </div>
+    </div>
+    <div class="pagination">
+      <button *ngFor="let page of getPaginationArray()" (click)="onPageChange(page)" [class.active]="currentPage === page" class="page-button">
+        {{ page }}
+      </button>
     </div>
   </div>
   

@@ -10,35 +10,38 @@ import { Subscription } from 'rxjs';
 })
 export class AllClothesComponent implements OnInit, OnDestroy {
   clothes: Clothing[] | null = [];
-  clothesRows: Clothing[][] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 3;
   clothingSubscription: Subscription | null = null;
-  
 
   constructor(private clothesService: ClothesService) {}
 
   ngOnInit(): void {
-    this.clothingSubscription = this.clothesService.getAllClothes().subscribe((data: Clothing[]) => {
-      this.clothes = data;
-      this.organizeClothesIntoRows();
-    });
-  }
-
-  organizeClothesIntoRows(): void {
-    const itemsPerRow = 3;
-    let currentRow: Clothing[] = [];
-
-    this.clothes?.forEach((item, index) => {
-      currentRow.push(item);
-      if ((index + 1) % itemsPerRow === 0 || index === this.clothes!.length - 1) {
-        this.clothesRows.push(currentRow);
-        currentRow = [];
-      }
-    });
+    this.clothingSubscription = this.clothesService
+      .getAllClothes()
+      .subscribe((data: Clothing[]) => {
+        this.clothes = data;
+      });
   }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('accessToken');
-  };
+  }
+
+  getRange(): { start: number, end: number } {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = Math.min(startIndex + this.itemsPerPage - 1, (this.clothes?.length || 0) - 1);
+    return { start: startIndex, end: endIndex };
+  }
+
+  onPageChange(pageNumber: number): void {
+    this.currentPage = pageNumber;
+  }
+
+  getPaginationArray(): number[] {
+    const pageCount = Math.ceil((this.clothes?.length || 0) / this.itemsPerPage);
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
+  }
 
   ngOnDestroy(): void {
     this.clothingSubscription?.unsubscribe();
