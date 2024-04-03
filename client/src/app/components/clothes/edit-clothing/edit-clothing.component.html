@@ -110,6 +110,7 @@
           </div>
         </div>
       </div>
+      <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
       <div class="buttons">
         <button type="submit">Update</button>
         <a routerLink="/store/{{ clothing._id }}">Cancel</a>

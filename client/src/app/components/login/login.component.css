@@ -5,12 +5,20 @@
   align-items: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form-group {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  width: 300px;
 }
 
 form > h1 {
@@ -28,14 +36,14 @@ form > h1 {
 }
 
 button {
-    border-radius: 2em;
-    padding: 10px;
-    width: 100px;
-    border: 1px solid gray;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  border-radius: 2em;
+  padding: 10px;
+  width: 100px;
+  border: 1px solid gray;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 button:hover {
@@ -45,8 +53,8 @@ button:hover {
 }
 
 p {
-    text-align: center;
-    margin-top: 5px;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .error-message {

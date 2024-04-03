@@ -16,6 +16,7 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
   userId: string = '';
   paramsSubscription: Subscription | null = null;
   clothingSubscription: Subscription | null = null;
+  removeClothingSubscription: Subscription | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,7 +51,7 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
     );
 
     if (confirmation) {
-      this.clothesService.removeClothing(this.itemId).subscribe(() => {
+      this.removeClothingSubscription=this.clothesService.removeClothing(this.itemId).subscribe(() => {
         this.router.navigate(['store']);
       });
     }
@@ -63,5 +64,6 @@ export class DetailsClothesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.paramsSubscription?.unsubscribe();
     this.clothingSubscription?.unsubscribe();
+    this.removeClothingSubscription?.unsubscribe();
   }
 }
